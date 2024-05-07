@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2><span>Nos</span> Coachs</h2>
+            </div>
+
+            
+        </div>
+        <div class="ftco-search">
+            <div class="row">
+                {% for coach in coachs %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ coach.nom}}</h5>
+                            <p class="card-text">Pour plus de détails, cliquez ci-dessous</p>
+                            <a href="{{ path('app_detail2page', {id: coach.id}) }}" class="card-link">Détail</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>{% endblock %}

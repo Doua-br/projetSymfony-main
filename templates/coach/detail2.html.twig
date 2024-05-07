@@ -1,0 +1,71 @@
+
+                        {% extends 'base.html.twig' %}
+                        {% block title %}{% endblock %}
+
+                        {% set home_active = 'active' %}
+
+                        {% block body %}
+                        <section class="ftco-section bg-light">
+                            <div class="container">
+                                <div class="row justify-content-center mb-5 pb-3">
+                                    <div class="col-md-7 text-center heading-section ftco-animate">
+
+                                        <h2 class="mb-4"></h2>
+                                    </div>
+                                </div>
+                                <div class="ftco-search">
+                                    <div class="row">
+                                        <div class="col-md-12 nav-link-wrap">
+                                        </div>
+                                        <div class="col-md-12 tab-wrap">
+                                            <div class="tab-content" id="v-pills-tabContent">
+                                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
+                                                    <div class="row">
+                                                        
+                        <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                            
+                                <th scope="col">Id</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Specialite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            
+                            <td>{{coach.id}}</td>
+                            <td>{{coach.nom}}</td>
+                            <td>{{coach.specialite}}</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
+                                                    <div class="speaker-wrap ftco-animate d-flex">
+                                                        <div class="img speaker-img" style="background-image: url(images/person_1.jpg);"></div>
+                                                        <div class="text pl-md-5">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {% endblock %}

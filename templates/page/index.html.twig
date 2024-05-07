@@ -1,0 +1,361 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% set home_active = 'active' %}
+
+{% block body %}
+<div class="hero-wrap js-fullheight" style="background-image: url('images/m.png');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-xl-10 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> Evenement <br><span>Sportif</span></h1>
+            <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">December 21, 2024. Tunisie, Sousse</p>
+            <div id="timer" class="d-flex mb-3">
+					<div class="time" id="days"></div>
+					<div class="time pl-4" id="hours"></div>
+					<div class="time pl-4" id="minutes"></div>
+					<div class="time pl-4" id="seconds"></div>
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="row justify-content-center mt-4">
+          <div class="col-md-6 text-center">
+            <a href="{{ path('app_eventpage') }}" class="btn btn-primary btn-lg mr-3">Découvrir les événements</a>
+            <a href="{{ path('app_coachpage') }}" class="btn btn-secondary btn-lg ">Rencontrer nos coachs</a>
+          </div>
+        </div>
+
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+            <span class="subheading">Table de Prix</span>
+            <h2 class="mb-1"><span>Prix irrésistibles </span> : Venez découvrir nos offres exceptionnelles !</h2>
+          </div>
+        </div>
+        <div class="row">
+	        <div class="col-md-4 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+	            <h2 class="heading">Une personne</h2>
+	            <span class="price"><sup>dt</sup> <span class="number">20</span></span>
+	            <span class="excerpt d-block">par Mois</span>
+	            
+	            <h3 class="heading-2 my-4">Profitez de toutes les fonctionnalités</h3>
+	            
+	            <ul class="pricing-text mb-5">
+                <li>-Itinéraires de marche</li>
+                <li>-Collations nutritives</li>
+                <li>-Séances d'entraînement</li>
+                <li>-Coachs professionnels</li>
+                <li>-Séances de yoga</li>
+                <li>-Accès illimité</li>
+                <li>-Tapis de yoga fournis</li>
+                <li>-Ateliers spéciaux</li>
+                <li>-Matériel pédagogique</li>
+	            </ul>
+
+	
+	            </div>
+	          </div>
+	        </div>
+	        <div class="col-md-4 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+	            <h2 class="heading">Groupe de 2 â 4 personnes</h2>
+	            <span class="price"><sup>dt</sup> <span class="number">65</span></span>
+	            <span class="excerpt d-block">par Mois</span>
+	            
+	            <h3 class="heading-2 my-4">Profitez de toutes les fonctionnalités</h3>
+	            
+	            <ul class="pricing-text mb-5">
+                <li>-Itinéraires de marche</li>
+                <li>-Collations nutritives</li>
+                <li>-Séances d'entraînement</li>
+                <li>-Coachs professionnels</li>
+                <li>-Séances de yoga</li>
+                <li>-Accès illimité</li>
+                <li>-Tapis de yoga fournis</li>
+                <li>-Ateliers spéciaux</li>
+                <li>-Matériel pédagogique</li>
+	            </ul>
+
+	            </div>
+	          </div>
+	        </div>
+	        <div class="col-md-4 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+	            <h2 class="heading">Pack Familial</h2>
+	            <span class="price"><sup>dt</sup> <span class="number">90</span></span>
+	            <span class="excerpt d-block">par Mois</span>
+	            
+	            <h3 class="heading-2 my-4">Profitez de toutes les fonctionnalités</h3>
+	            
+	            <ul class="pricing-text mb-5">
+                <li>-Itinéraires de marche</li>
+                <li>-Collations nutritives</li>
+                <li>-Séances d'entraînement</li>
+                <li>-Coachs professionnels</li>
+                <li>-Séances de yoga</li>
+                <li>-Accès illimité</li>
+                <li>-Tapis de yoga fournis</li>
+                <li>-Ateliers spéciaux</li>
+                <li>-Matériel pédagogique</li>
+	            </ul>
+
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+      </div>
+    </section>
+
+
+
+		
+
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Testimonial</span>
+            <h2 class="mb-4"><span>Clients </span>satisfaits</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              <div class="item">
+                <div class="testimony-wrap text-center py-4 pb-5">
+                  <div class="user-img mb-4" style="background-image: url(images/speaker-1.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4">J'ai adoré l'ambiance énergique et la camaraderie entre les participants. C'était une expérience vraiment motivante !"</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap text-center py-4 pb-5">
+                  <div class="user-img mb-4" style="background-image: url(images/speaker-2.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4">Je suis tellement reconnaissant d'avoir participé à cet événement sportif. Non seulement j'ai pu me dépasser physiquement, mais j'ai également rencontré des personnes formidables partageant la même passion que moi."</p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap text-center py-4 pb-5">
+                  <div class="user-img mb-4" style="background-image: url(images/speaker-3.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4">C'était génial de voir autant de gens réunis pour soutenir une cause sportive. Participer à cet événement m'a rappelé l'importance du sport dans la construction de communautés solides et en bonne santé.</p>
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap text-center py-4 pb-5">
+                  <div class="user-img mb-4" style="background-image: url(images/speaker-4.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4">Je suis impressionné par l'organisation de l'événement. Tout était parfaitement orchestré, des inscriptions à la logistique sur place. Cela a vraiment facilité ma participation et m'a permis de me concentrer sur ma performance.</p>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap text-center py-4 pb-5">
+                  <div class="user-img mb-4" style="background-image: url(images/speaker-5.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-4">Ce événement sportif m'a donné un nouvel élan de motivation pour poursuivre mes objectifs de fitness. Je suis tellement inspiré par les autres participants et leur détermination. Vivement l'année prochaine</p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Notre Blog</span>
+            <h2><span>Blog</span> Récent</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/o.jpeg');">
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4">
+              		<div class="one">
+              			<span class="day">07</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">January</span>
+              		</div>
+              	</div>
+                <h3 class="heading mt-2"><a href="#">Article</a></h3>
+                <p>
+
+                  Les Bienfaits de la Marche pour la Santé Physique et Mentale
+                  <br>
+                  La marche est l'une des formes les plus accessibles et bénéfiques d'activité physique pour améliorer à la fois la santé physique et mentale. En effet, ses avantages vont bien au-delà de simplement parcourir des kilomètres. <br>Voici pourquoi vous devriez envisager d'intégrer la marche à votre routine quotidienne.</p>
+                  <a href="{{ path('reserveEvent') }}" class="btn btn-primary btn-lg mr-3 ">Reserver</a>
+            
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/mar.jpeg');">
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4">
+              		<div class="one">
+              			<span class="day">07</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">January</span>
+              		</div>
+              	</div>
+                <h3 class="heading mt-2"><a href="#">Conseils de Sécurité pour Profiter Pleinement de vos Activités en Plein Air</a></h3>
+                <p>Participer à des événements sportifs en plein air peut être une expérience formidable, mais il est essentiel de prendre des précautions pour assurer votre sécurité. Voici quelques conseils utiles :<br>
+                  -Rester Hydraté.<br>
+                  -Porter des Vêtements Appropriés.<br>
+                  -Se Protéger du Soleil.<br>
+                  -Éviter les Heures Chaudes.<br>
+                  
+                  
+                </p>
+
+                <a href="{{ path('reserveEvent') }}" class="btn btn-primary btn-lg mr-3">Reserver</a>
+            
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/no.jpeg');">
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4">
+              		<div class="one">
+              			<span class="day">06</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">January</span>
+              		</div>
+              	</div>
+                <h3 class="heading mt-2"><a href="#">Les Dernières Actualités et Tendances dans le Monde du Sport</a></h3>
+                <p>Dans un monde en constante évolution, le domaine du sport ne fait pas exception. Voici un aperçu des dernières nouvelles et tendances qui façonnent l'avenir de l'industrie sportive :<br>
+
+                  -Avancées Technologiques dans le Sport.<br>
+                 -Études sur la Santé et le Bien-être des Athlètes.<br>
+
+                </p>
+                <a href="{{ path('reserveEvent') }}" class="btn btn-primary btn-lg mr-3">Reserver</a>
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+    <section class="ftco-section-parallax">
+      <div class="parallax-img d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+              <h2>Inscrivez-vous à notre Newsletter</h2>
+              <p>Restez informé(e) des dernières actualités, événements et offres exclusives en vous abonnant à notre newsletter. Recevez des conseils santé, des astuces d'entraînement et bien plus encore directement dans votre boîte de réception.</p>
+              <div class="row d-flex justify-content-center mt-4 mb-4">
+                <div class="col-md-8">
+                  <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                      <input type="text" class="form-control" placeholder="Enter email address">
+                      <input type="submit" value="Subscribe" class="submit px-3">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-gallery">
+    	<div class="container-wrap">
+    		<div class="row no-gutters">
+					<div class="col-md-3 ftco-animate">
+						<a href="images/u.jpeg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/u.jpeg);">
+							<div class="icon mb-4 d-flex align-items-center justify-content-center">
+    						<span class="icon-instagram"></span>
+    					</div>
+						</a>
+					</div>
+					<div class="col-md-3 ftco-animate">
+						<a href="images/l.jpeg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/l.jpeg);">
+							<div class="icon mb-4 d-flex align-items-center justify-content-center">
+    						<span class="icon-instagram"></span>
+    					</div>
+						</a>
+					</div>
+					<div class="col-md-3 ftco-animate">
+						<a href="images/k.jpeg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/k.jpeg);">
+							<div class="icon mb-4 d-flex align-items-center justify-content-center">
+    						<span class="icon-instagram"></span>
+    					</div>
+						</a>
+					</div>
+					<div class="col-md-3 ftco-animate">
+						<a href="images/w.jpeg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/w.jpeg);">
+							<div class="icon mb-4 d-flex align-items-center justify-content-center">
+    						<span class="icon-instagram"></span>
+    					</div>
+						</a>
+					</div>
+        </div>
+    	</div>
+    </section>
+
+    
+
+{% endblock %}
