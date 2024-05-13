@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+   
+{% endblock %}
+
+{% set home_active = 'active' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        
+        label {
+        
+        color: black;
+    }
+        input[type="text"], textarea {
+        color: black;
+        background-color: black; 
+        border: 1px solid black; 
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 style="padding-top: 100px; text-align: center;">Ajouter Un Coatch</h1>
+    {{ form(form) }}
+{% endblock %}

@@ -2,16 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\Evenement;
 use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
 use App\Form\ReserveEventType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+
 
 class UserController extends AbstractController
 {
@@ -22,18 +25,21 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+  
     #[Route('/reserveEvent', name: 'reserveEvent')]
-    public function add(Request $request,UserRepository $productRepository,EntityManagerInterface $em): Response
+    public function add(Request $request,UserRepository $userRepository,EntityManagerInterface $em): Response
     {
         $user = new User();
         $form = $this->createForm(ReserveEventType::class,$user);
+        
+        $form->remove('administrateur');
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
+            // but, the original $task variable has also been updated
             $user = $form->getData();
-            
+            	
             $em->persist($user);
             $em->flush();
             $this->addFlash(
@@ -45,9 +51,7 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('app_homepage');
         }
-
-        
+ 
         return $this->render('evenement/reserveEvent.html.twig', ['form' => $form]);
-    }
-
+    }       
 }
