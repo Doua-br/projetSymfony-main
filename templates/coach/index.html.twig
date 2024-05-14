@@ -8,13 +8,22 @@
                 <h2><span>Nos</span> Coachs</h2>
             </div>
         </div>
-        <div class="row">
-            {% for coach in coachs %}
-            <div class="col-md-4">
-                <div class="card mb-4 border-0 rounded-0 shadow-sm">
-                    <div class="card-img-top rounded-circle overflow-hidden" style="width: 150px; height: 150px; margin: 0 auto;">
-                        <img src="{{ asset('images/' ~ coach.image) }}" class="img-fluid" alt="{{ coach.nom }}">
+        <a href="{{ path('coach.edit') }}" class="btn btn-secondary btn-lg ">➕ ajouter un coach</a>
 
+
+        <!-- Zone de texte de recherche -->
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-6 text-center">
+                <input type="text" id="searchInput" class="form-control" placeholder="Rechercher..." onkeyup="filterCoaches()">
+            </div>
+        </div>
+
+        <div class="row" id="coachList">
+            {% for coach in pagination %}
+            <div class="col-md-4 coach-item">
+                <div class="card mb-4 border-0 rounded-0 shadow-sm">
+                    <div class="card-img-top rounded-circle overflow-hidden mx-auto" style="width: 150px; height: 150px;">
+                        <img src="{{ asset('images/' ~ coach.image) }}" class="img-fluid" alt="{{ coach.nom }}">
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ coach.nom }}</h5>
@@ -25,6 +34,29 @@
             </div>
             {% endfor %}
         </div>
+
+        <!-- Pagination -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
     </div>
 </section>
+
+<script>
+    function filterCoaches() {
+        var filterValue = document.getElementById("searchInput").value.toUpperCase();
+        var coachItems = document.getElementsByClassName("coach-item");
+
+        for (var i = 0; i < coachItems.length; i++) {
+            var title = coachItems[i].getElementsByClassName("card-title")[0];
+            if (title.innerText.toUpperCase().indexOf(filterValue) > -1) {
+                coachItems[i].style.display = "";
+            } else {
+                coachItems[i].style.display = "none";
+            }
+        }
+    }
+</script>
 {% endblock %}

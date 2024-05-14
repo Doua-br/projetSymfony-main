@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class EvenementController extends AbstractController
 {
@@ -34,7 +35,7 @@ class EvenementController extends AbstractController
     }
 
     #[Route('/event/edit/{id?0}', name: 'event.edit')]
-    public function addEvent(Evenement $evenement = null, ManagerRegistry $doctrine, Request $request, $photoDir2 = null): Response{
+    public function addEvent(Evenement $evenement = null, ManagerRegistry $doctrine, Request $request,#[Autowire('%photo_dir%') ]string  $photoDir2): Response{
         $new = false;
 
         if (!$evenement) {

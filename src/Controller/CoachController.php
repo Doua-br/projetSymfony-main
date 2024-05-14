@@ -12,17 +12,30 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 class CoachController extends AbstractController
 {
     #[Route('/coach', name: 'app_coachpage')]
-    public function coach(ManagerRegistry $doctrine): Response
+    public function coach(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
-        $repository = $doctrine->getRepository(Coach::class);
-        $coachs = $repository->findAll();
-        return $this->render('coach/index.html.twig', ['coachs' => $coachs]);
-    }
+        $repository = $entityManager->getRepository(Coach::class);
 
+        // Créer une requête QueryBuilder
+        $queryBuilder = $repository->createQueryBuilder('c')
+            ->getQuery();
+
+        // Paginer les résultats avec PaginatorInterface
+        $pagination = $paginator->paginate(
+            $queryBuilder, // Requête à paginer
+            $request->query->getInt('page', 1), // Numéro de page
+            6 // Nombre d'éléments par page
+        );
+
+        return $this->render('coach/index.html.twig', ['pagination' => $pagination]);
+    }
+    
 
     #[Route('/coach/{id<\d+>}', name: 'app_detail2page')]
     public function detailCoach(ManagerRegistry $doctrine,$id): Response // Correction du typehinting

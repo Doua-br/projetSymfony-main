@@ -10,10 +10,17 @@
                 <h2><span>Nos</span> Événements</h2>
             </div>
         </div>
-        <div class="ftco-search">
+                <a href="{{ path('event.edit') }}" class="btn btn-secondary btn-lg ">➕ ajouter un event</a>
+
+        <div class="ftco-search text-center"> <!-- Ajout de la classe text-center pour centrer -->
+            <!-- Zone de texte de recherche -->
+            <div class="col-md-6 mx-auto"> <!-- Ajout de la classe mx-auto pour centrer horizontalement -->
+                <input type="text" id="searchInput" class="form-control" placeholder="Rechercher..." onkeyup="filterEvents()">
+            </div>
+            
             <div class="row">
                 {% for event in events %}
-                <div class="col-md-4">
+                <div class="col-md-4 eventItem">
                     <div class="card mb-4">
                         <img src="{{ asset('images/' ~ event.image) }}" class="card-img-top img-fluid" alt="{{ event.titre }}">
                         <div class="card-body">
@@ -30,4 +37,24 @@
         </div>
     </div>
 </section>
+
+<script>
+    function filterEvents() {
+        // Récupérer la valeur saisie dans la zone de texte
+        var filterValue = document.getElementById("searchInput").value.toUpperCase();
+        
+        // Récupérer tous les éléments d'événement
+        var eventItems = document.getElementsByClassName("eventItem");
+
+        // Parcourir tous les éléments et masquer ceux qui ne correspondent pas à la recherche
+        for (var i = 0; i < eventItems.length; i++) {
+            var title = eventItems[i].getElementsByClassName("card-title")[0];
+            if (title.innerText.toUpperCase().indexOf(filterValue) > -1) {
+                eventItems[i].style.display = "";
+            } else {
+                eventItems[i].style.display = "none";
+            }
+        }
+    }
+</script>
 {% endblock %}
