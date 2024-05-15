@@ -3,6 +3,22 @@
 {% block title %}Nos Événements{% endblock %}
 
 {% block body %}
+<style>
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    /* Votre style pour les boutons */
+}
+
+.btn span {
+    margin-right: 5px; /* Ajustez la marge entre l'emoji et le texte */
+    font-size: 1.5em; /* Ajustez la taille de l'emoji */
+}
+</style>
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -10,11 +26,10 @@
                 <h2><span>Nos</span> Événements</h2>
             </div>
         </div>
-                <a href="{{ path('event.edit') }}" class="btn btn-secondary btn-lg ">➕ ajouter un event</a>
+        <a href="{{ path('event.edit') }}" class="btn btn-secondary btn-lg">➕ ajouter un event</a>
 
-        <div class="ftco-search text-center"> <!-- Ajout de la classe text-center pour centrer -->
-            <!-- Zone de texte de recherche -->
-            <div class="col-md-6 mx-auto"> <!-- Ajout de la classe mx-auto pour centrer horizontalement -->
+        <div class="ftco-search text-center">
+            <div class="col-md-6 mx-auto">
                 <input type="text" id="searchInput" class="form-control" placeholder="Rechercher..." onkeyup="filterEvents()">
             </div>
             
@@ -28,25 +43,56 @@
                             <p class="card-text">{{ event.description | length > 100 ? event.description | slice(0, 100) ~ '...' : event.description }}</p>
                             <p class="card-text"><strong>Lieu:</strong> {{ event.lieu }}</p>
                             <p class="card-text"><strong>Date:</strong> {{ event.date ? event.date|date('d/m/Y H:i') : '' }}</p>
-                            <a href="{{ path('app_detailpage', {id: event.id}) }}" class="btn btn-primary">Détail</a>
+                            <a href="{{ path('app_detailpage', {id: event.id}) }}" class="btn btn-primary">
+                                <span>🔍</span> Détail
+                            </a>
+
+                            <a href="{{ path('add_panier',{id: event.id}) }}" class="btn btn-primary">
+                                <span>🛒</span> Ajouter au panier
+                            </a>
+
+                    
                         </div>
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-6 text-center">
+                    <nav>
+                        <ul class="pagination">
+                            {% if currentPage > 1 %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ path('app_eventpage', {page: currentPage - 1}) }}">Précédent</a>
+                            </li>
+                            {% endif %}
+
+                            {% for i in 1..totalPages %}
+                            <li class="page-item {{ i == currentPage ? 'active' : '' }}">
+                                <a class="page-link" href="{{ path('app_eventpage', {page: i}) }}">{{ i }}</a>
+                            </li>
+                            {% endfor %}
+
+                            {% if currentPage < totalPages %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ path('app_eventpage', {page: currentPage + 1}) }}">Suivant</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <script>
+    //recherche
     function filterEvents() {
-        // Récupérer la valeur saisie dans la zone de texte
         var filterValue = document.getElementById("searchInput").value.toUpperCase();
-        
-        // Récupérer tous les éléments d'événement
         var eventItems = document.getElementsByClassName("eventItem");
 
-        // Parcourir tous les éléments et masquer ceux qui ne correspondent pas à la recherche
         for (var i = 0; i < eventItems.length; i++) {
             var title = eventItems[i].getElementsByClassName("card-title")[0];
             if (title.innerText.toUpperCase().indexOf(filterValue) > -1) {

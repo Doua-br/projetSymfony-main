@@ -4,32 +4,58 @@
 
 {% set contact_active = 'active' %}
 
-{% block body %}
+{% block stylesheets %}
+    <style>
     
-    <h1 style="padding-top: 100px; text-align: center;">Connexion</h1>
+        .login-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
 
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error.messageKey|trans(error.messageData, 'security') }}
-        </div>
-    {% endif %}
+{% block body %}
+    <div class="login-container">
+        <h1 class="text-center mb-4">Connexion</h1>
 
-    <form action="{{ path('security.login') }}" method="post" class="form-horizontal">
-        <div class="form-group">
-            <label for="username" class="control-label">Email :</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required autofocus>
-        </div>
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
 
-        <div class="form-group">
-            <label  style="padding-top: 50px; for="password" class="control-label">Mot de passe :</label>
-            <input type="password" id="password" name="_password" class="form-control" required>
-        </div>
+        <form action="{{ path('security.login') }}" method="post">
+            <div class="form-group mb-3">
+                <label for="username" class="form-label">Email :</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required autofocus>
+                </div>
+            </div>
 
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"> #}
+            <div class="form-group mb-4">
+                <label for="password" class="form-label">Mot de passe :</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" id="password" name="_password" class="form-control" required>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Se connecter</button>
-        </div>
-    </form>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 {% endblock %}

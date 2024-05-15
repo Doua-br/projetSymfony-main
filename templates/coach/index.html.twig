@@ -10,7 +10,6 @@
         </div>
         <a href="{{ path('coach.edit') }}" class="btn btn-secondary btn-lg ">➕ ajouter un coach</a>
 
-
         <!-- Zone de texte de recherche -->
         <div class="row justify-content-center mb-3">
             <div class="col-md-6 text-center">
@@ -28,7 +27,8 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ coach.nom }}</h5>
                         <p class="card-text">{{ coach.specialite }}</p>
-                        <a href="{{ path('app_detail2page', {id: coach.id}) }}" class="btn btn-primary">Détails</a>
+                        <a href="{{ path('app_detail2page', {id: coach.id}) }}" class="btn btn-primary"><span>🔍</span> Détail</a>
+                        
                     </div>
                 </div>
             </div>
@@ -36,9 +36,29 @@
         </div>
 
         <!-- Pagination -->
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                {{ knp_pagination_render(pagination) }}
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 text-center">
+                <nav>
+                    <ul class="pagination">
+                        {% if pagination.currentPageNumber > 1 %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ path('app_coachpage', { page: pagination.currentPageNumber - 1 }) }}">Précédent</a>
+                        </li>
+                        {% endif %}
+
+                        {% for i in 1..pagination.pageCount %}
+                        <li class="page-item {{ i == pagination.currentPageNumber ? 'active' : '' }}">
+                            <a class="page-link" href="{{ path('app_coachpage', { page: i }) }}">{{ i }}</a>
+                        </li>
+                        {% endfor %}
+
+                        {% if pagination.currentPageNumber < pagination.pageCount %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ path('app_coachpage', { page: pagination.currentPageNumber + 1 }) }}">Suivant</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

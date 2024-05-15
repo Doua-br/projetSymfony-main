@@ -76,12 +76,13 @@ public function addCoach(Coach $coach = null, ManagerRegistry $doctrine, Request
             //$directory = $this->getParameter('personne_directory');
             //$personne->setImage($uploaderService->uploadFile($photo, $directory));
             $photo->move($photoDir,$fileName);
-        }
-        $coach->setImage($fileName);
+            
+            }
+            $coach->setImage($fileName);
         $manager=$doctrine->getManager();
         
 
-        $manager=$doctrine->getManager();
+        
         //l'objet est pret d'etre enregistrer
         $manager->persist($coach);
         //envoi

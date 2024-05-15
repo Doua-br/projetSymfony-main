@@ -3,3 +3,12 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+
+
+error_404:
+    path: /{catchall}
+    controller: App\Controller\ErrorController::pageNotFound
+    requirements:
+        catchall: '.*'
+
