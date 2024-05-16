@@ -10,7 +10,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     
-     #[Route("/login", name:"security.login",methods:['GET','POST'])]
+     
+    #[Route("/login", name:"security.login",methods:['GET','POST'])]
      
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -19,6 +20,10 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', [ 'last_username' => $lastUsername,'error' => $error]);
     }
+  
+  
+
+  
   
     #[Route("/logout", name: "security.logout")]
      

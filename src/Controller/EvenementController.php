@@ -186,7 +186,7 @@ class EvenementController extends AbstractController
         // On sauvegarde dans la session
         $session->set("panier", $panier);
 
-        return $this->redirectToRoute("app_eventpage");
+        return $this->redirectToRoute("app_panier");
     }
 
     
@@ -205,7 +205,7 @@ class EvenementController extends AbstractController
         // On sauvegarde dans la session
         $session->set("panier", $panier);
 
-        return $this->redirectToRoute("app_eventpage");
+        return $this->redirectToRoute("app_panier");
     }
 
     

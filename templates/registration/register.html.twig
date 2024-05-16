@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
-
-{% set contact_active = 'active' %}
+{% block title %}s'inscrire{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -18,25 +16,40 @@
         .login-container h1 {
             margin-bottom: 20px;
         }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-label {
+            margin-bottom: 0.5rem;
+        }
+        .input-group-text {
+            background-color: #fff;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
     <div class="login-container">
-        <h1 class="text-center mb-4">Connexion</h1>
+        <h1 class="text-center mb-4">créer un compte</h1>
 
-        {% if error %}
-            <div class="alert alert-danger">
-                {{ error.messageKey|trans(error.messageData, 'security') }}
-            </div>
-        {% endif %}
+        {{ form_start(registrationForm) }}
+            {{ form_errors(registrationForm) }}
 
-        <form action="{{ path('security.login') }}" method="post">
             <div class="form-group mb-3">
                 <label for="username" class="form-label">Email :</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required autofocus>
+                    {{ form_widget(registrationForm.email, {
+                        'attr': {
+                            'class': 'form-control',
+                            'placeholder': 'Email',
+                            'autofocus': true
+                        }
+                    }) }}
                 </div>
             </div>
 
@@ -44,18 +57,19 @@
                 <label for="password" class="form-label">Mot de passe :</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" id="password" name="_password" class="form-control" required>
+                    {{ form_widget(registrationForm.plainPassword, {
+                        'attr': {
+                            'class': 'form-control',
+                            'placeholder': 'Mot de passe'
+                        }
+                    }) }}
                 </div>
             </div>
 
-            <div class="d-grid mb-3">
-                <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-block">créer </button>
             </div>
-        </form>
-
-        <div class="text-center mt-3">
-            <p>Pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
-        </div>
+        {{ form_end(registrationForm) }}
     </div>
 {% endblock %}
 

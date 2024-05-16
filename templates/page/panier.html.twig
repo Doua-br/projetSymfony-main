@@ -6,89 +6,59 @@
 
 {% block body %}
     <section class="bg-light p-3">
-     <h1 style="padding-top: 100px; text-align: center;">Votre panier</h1>
-   
+        <h1 style="padding-top: 100px; text-align: center;">Votre panier</h1>
     </section>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Image</th>
-                <th>Evenement</th>
+                <th>Événement</th>
                 <th>Date</th>
                 <th>Lieu</th>
-                <th>Action d'ajout</th>
-                <th>Action de supprission</th>
+                <th>Action de suppression</th>
             </tr>
         </thead>
         <tbody>
             {% for element in dataPanier %}
                 <tr>
                     <td>
-                        <img src="{{ asset('images/' ~ element.evenement.image) }}"  alt="{{ element.evenement.titre }}">
+                        <img src="{{ asset('images/' ~ element.evenement.image) }}" alt="{{ element.evenement.titre }}">
                     </td>
-
-                    
                     <td>{{ element.evenement.titre }}</td>
                     <td>{{ element.evenement.date|date("d/m/Y") }}</td>
                     <td>{{ element.evenement.lieu }}</td>
                     <td>
-                        <a href="{{ path('add_panier', { id: element.evenement.id }) }}">Ajouter un autre evenement</a>
-                    </td>
-                    <td>   
-                        <a href="{{ path('remove_panier', { id: element.evenement.id }) }}">Supprimer l'evenement</a>
+                        <a href="{{ path('remove_panier', { id: element.evenement.id }) }}" >Supprimer l'événement</a>
                     </td>
                 </tr>
-            <tfoot>
-            <tr>
-                <td colspan="5" class="text-right">
-                    <a href="{{ path('delete_all_panier') }}" class="btn btn-danger">Supprimer tous les evenements</a>
-                </td>
-            </tr>
-        </tfoot>
             {% else %}
                 <tr>
-    <td colspan="5" class="text-center">
-        <div class="empty-cart">
-            <img src="{{ asset('images/empty-cart.png') }}" alt="Panier vide" class="empty-cart-image">
-            <h2>Votre panier est vide :(</h2>
-            <p>Explorez nos événements et ajoutez ceux qui vous intéressent.</p>
-            <a href="{{ path('app_eventpage') }}" class="btn btn-primary">Voir les événements</a>
-        </div>
-    </td>
-</tr>
-
-<style>
-    .empty-cart {
-        text-align: center;
-        padding: 20px;
-        background-color: #f8f9fa;
-        border-radius: 10px;
-    }
-    .empty-cart-image {
-        width: 100px;
-        margin-bottom: 20px;
-    }
-    .empty-cart h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-        color: #6c757d;
-    }
-    .empty-cart p {
-        font-size: 18px;
-        margin-bottom: 20px;
-        color: #6c757d;
-    }
-    .empty-cart .btn-primary {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-</style>
-
+                    <td colspan="5" class="text-center">
+                        <div class="empty-cart">
+                            <img src="{{ asset('images/empty-cart.png') }}" alt="Panier vide" class="empty-cart-image">
+                            <h2>Votre panier est vide :(</h2>
+                            <p>Explorez nos événements et ajoutez ceux qui vous intéressent.</p>
+                            <a href="{{ path('app_eventpage') }}" class="btn btn-primary">Voir les événements</a>
+                        </div>
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
-        
+        {% if dataPanier is not empty %}
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ path('add_panier', { id: dataPanier[0].evenement.id }) }}" class="btn btn-success">Ajouter un autre événement</a>
+                            <a href="{{ path('delete_all_panier') }}" class="btn btn-danger">Supprimer tous les événements</a>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        {% endif %}
     </table>
-     <h1 style="padding-bottom: 250px; text-align: center;"></h1>
-   
+
+    <h1 style="padding-bottom: 250px; text-align: center;"></h1>
+
 {% endblock %}

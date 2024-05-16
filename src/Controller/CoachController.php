@@ -14,10 +14,11 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 class CoachController extends AbstractController
 {
     #[Route('/coach', name: 'app_coachpage')]
+    
     public function coach(Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
         $repository = $entityManager->getRepository(Coach::class);
@@ -54,6 +55,7 @@ if(!$coach){
 
 
 #[Route('/coach/edit/{id?0}', name: 'coach.edit')]
+#[IsGranted('ROLE_ADMIN')]
 public function addCoach(Coach $coach = null, ManagerRegistry $doctrine, Request $request,#[Autowire('%photo_dir%') ]string $photoDir): Response 
     {
 
@@ -100,9 +102,8 @@ public function addCoach(Coach $coach = null, ManagerRegistry $doctrine, Request
         'new' => $new
     ]);
 }
-#[
-    Route('/coach/delete/{id}', name: 'coach.delete')
-]
+#[Route('/coach/delete/{id}', name: 'coach.delete')]
+#[IsGranted('ROLE_ADMIN')]
 public function deletePersonne(Coach $coach = null, ManagerRegistry $doctrine): RedirectResponse {
     // Récupérer la personne
     if ($coach) {

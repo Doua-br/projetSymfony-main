@@ -35,9 +35,10 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a href="{{ path('coach.edit', {'id': coach.id}) }}" class="btn btn-primary">🖊️Editer</a>
-                    <a href="{{ path('coach.delete', {'id': coach.id}) }}" class="btn btn-primary">🧹supprimer</a>
-                    
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('coach.edit', {'id': coach.id}) }}" class="btn btn-primary">🖊️Editer</a>
+                        <a href="{{ path('coach.delete', {'id': coach.id}) }}" class="btn btn-primary">🧹supprimer</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

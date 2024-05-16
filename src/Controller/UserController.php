@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Evenement;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\RegistrationFormType;
 
 use App\Entity\User;
-use App\Form\ReserveEventType;
+
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -18,6 +20,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class UserController extends AbstractController
 {
+
     #[Route('/user', name: 'app_user')]
     public function index(): Response
     {   
@@ -25,12 +28,13 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
-  
+
+    
     #[Route('/reserveEvent', name: 'reserveEvent')]
     public function add(Request $request,UserRepository $userRepository,EntityManagerInterface $em): Response
     {
         $user = new User();
-        $form = $this->createForm(ReserveEventType::class,$user);
+        $form = $this->createForm(RegistrationFormType::class,$user);
         
         $form->remove('administrateur');
         $form->handleRequest($request);
