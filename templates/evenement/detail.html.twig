@@ -45,10 +45,10 @@
                     </table>
                     
                     <a href="{{ path('add_panier',{id: event.id}) }}" class="btn btn-primary">🛒ajouter panier</a>
-                    
-                    <a href="{{ path('event.edit', {'id': event.id}) }}" class="btn btn-primary">🖊️Editer</a>
-                    <a href="{{ path('event.delete', {'id': event.id}) }}" class="btn btn-primary">🧹supprimer</a>
-                    
+                    {% if is_granted('ROLE_COACH') %}
+                        <a href="{{ path('event.edit', {'id': event.id}) }}" class="btn btn-primary">🖊️Editer</a>
+                        <a href="{{ path('event.delete', {'id': event.id}) }}" class="btn btn-primary">🧹supprimer</a>
+                    {% endif %}
                     
                 </div>
             </div>

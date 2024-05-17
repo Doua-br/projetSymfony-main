@@ -5,6 +5,7 @@
 {% set contact_active = 'active' %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <style>
         .login-container {
             max-width: 500px;
@@ -48,6 +49,8 @@
                 </div>
             </div>
 
+          
+
             <div class="d-grid mb-3">
                 <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
             </div>
@@ -57,8 +60,4 @@
             <p>Pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 {% endblock %}

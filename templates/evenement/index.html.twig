@@ -26,8 +26,9 @@
                 <h2><span>Nos</span> Événements</h2>
             </div>
         </div>
-        <a href="{{ path('event.edit') }}" class="btn btn-secondary btn-lg">➕ ajouter un event</a>
-
+        {% if is_granted('ROLE_COACH')  %}
+            <a href="{{ path('event.edit') }}" class="btn btn-secondary btn-lg">➕ ajouter un event</a>
+        {% endif %}
         <div class="ftco-search text-center">
             <div class="col-md-6 mx-auto">
                 <input type="text" id="searchInput" class="form-control" placeholder="Rechercher..." onkeyup="filterEvents()">

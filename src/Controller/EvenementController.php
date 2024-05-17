@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 class EvenementController extends AbstractController
@@ -61,12 +61,15 @@ class EvenementController extends AbstractController
     }
 
     #[Route('/event/edit/{id?0}', name: 'event.edit')]
+    
+    #[IsGranted('ROLE_COACH')]
     public function addEvent(Evenement $evenement = null, ManagerRegistry $doctrine, Request $request,#[Autowire('%photo_dir%') ]string  $photoDir2): Response{
         $new = false;
 
         if (!$evenement) {
             $new = true;
             $evenement = new Evenement();
+            
         }
 
         $form = $this->createForm(EvenementType::class, $evenement);
@@ -99,8 +102,10 @@ class EvenementController extends AbstractController
             'new' => $new
         ]);
     }
-
+    
     #[Route('/event/delete/{id}', name: 'event.delete')]
+   
+    #[IsGranted('ROLE_COACH')]
     public function deletePersonne(Evenement $evenement = null, ManagerRegistry $doctrine): RedirectResponse
     {
         // Récupérer la personne

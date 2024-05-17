@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Form;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use App\Entity\AllUser;
 use Symfony\Component\Form\AbstractType;
@@ -43,6 +44,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            
         ;
     }
 

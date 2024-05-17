@@ -9,20 +9,47 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        
-        label {
-        
-        color: black;
-    }
-        input[type="text"], textarea {
-        color: black;
-        background-color: black; 
-        border: 1px solid black; 
-    }
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            padding-top: 100px;
+            padding-bottom: 50px;
+            text-align: center;
+            color: #343a40;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+        .form-group label {
+            color: #495057;
+        }
+        .form-control {
+            color: #495057;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
     <h1 style="padding-top: 100px; text-align: center;">Ajouter Un Evenement</h1>
-    {{ form(form) }}
+    <div class="form-container">
+        {{ form(form) }}
+    </div>
 {% endblock %}
