@@ -32,25 +32,10 @@ class PageController extends AbstractController
         ]);
     }
     
-    #[Route('/Sup', name: 'app_Suppage')]
-    public function sInscrire(): Response
-    {
-        return $this->render('page/Sup.html.twig', [
-           
-        ]);
-    }
     
-
-    #[Route('/connectAdmin', name: 'app_Sinpage')]
-
-    public function seConnecter(): Response {
-       
-       
-        return $this->render('page/Sin.html.twig', [
-            
-        ]);
+   
     
-    }
+    
    
     
 }
